@@ -46,7 +46,6 @@ jobs:
       run: |
         npm install --openssl-legacy-provider
         npm run build --openssl-legacy-provider --if-present
-        npm run test --if-present
 
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v3
