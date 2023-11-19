@@ -6,7 +6,7 @@ name: Build and deploy Node.js app to Azure Web App - distributed-app
 on:
   push:
     branches:
-      - master
+      - develop
   workflow_dispatch:
 
 jobs:
@@ -27,7 +27,7 @@ jobs:
           npm run build --openssl-legacy-provider --if-present
 
       - name: Zip artifact for deployment
-        run: zip -r release.zip ./* node_modules
+        run: zip -r release.zip ./*
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
