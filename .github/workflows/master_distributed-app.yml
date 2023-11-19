@@ -6,7 +6,7 @@ name: Build and deploy Node.js app to Azure Web App - distributed-app
 on:
   push:
     branches:
-      - develop
+      - master
   workflow_dispatch:
 
 jobs:
@@ -28,9 +28,6 @@ jobs:
 
       - name: Zip artifact for deployment
         run: zip -r release.zip ./*
-      
-      - name: Install angular cli globally
-        run: npm install -g @angular/cli
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -53,7 +50,10 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
-
+      
+      - name: Install angular cli globally
+        run: npm install -g @angular/cli
+        
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
